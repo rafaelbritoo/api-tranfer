@@ -18,11 +18,13 @@
         "illuminate/collections": "^10.0",
         "illuminate/contracts": "^10.0",
         "illuminate/macroable": "^10.0",
-        "illuminate/support": "^10.0"
+        "illuminate/support": "^10.0",
+        "predis/predis": "^2.2",
+        "illuminate/redis" : "5.1.*"
     },
     "autoload": {
         "psr-4": {
-            "Illuminate\\Redis\\": ""
+            "Illuminate\\Redis\\": "5.1.*"
         }
     },
     "suggest": {
