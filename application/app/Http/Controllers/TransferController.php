@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\TransferService;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Response;
-use App\Http\Requests\CreateTransferRequest;
+use App\Http\Controllers\Requests\CreateTransferRequest;
 
 class TransferController extends Controller
 {

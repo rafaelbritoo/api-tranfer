@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Contracts\NotificationContract;
-use App\Contracts\PaymentGatewayContract;
+//use App\Contracts\NotificationContract;
+//use App\Contracts\PaymentGatewayContract;
 use App\DTO\TransferDTO;
 use App\Enum\TransferStatusEnum;
 use App\Exceptions\TransferException;
@@ -14,13 +14,13 @@ use App\Repositories\TransferRepository;
 use App\Repositories\WalletRepository;
 use Illuminate\Support\Facades\DB;
 
-class TransferService implements PaymentGatewayContract, NotificationContract
+class TransferService
 {
     public function __construct(
         private TransferRepository     $transferRepository,
         private WalletRepository       $walletRepository,
-        private PaymentGatewayContract $paymentGateway,
-        private NotificationContract   $notificationContract,
+//        private PaymentGatewayContract $paymentGateway,
+//        private NotificationContract   $notificationContract,
         private CustomerRepository     $customerRepository,
     )
     {
@@ -46,13 +46,13 @@ class TransferService implements PaymentGatewayContract, NotificationContract
             $this->walletRepository->withdrawal($payerWallet->getKey(), $transferDTO->amount);
             $this->transferRepository->updateTransferStatus($transaction->getKey(), TransferStatusEnum::Done);
 
-            if (!$this->paymentGateway->authorizePayment()) {
-                throw TransferException::notAuthorizedByGateway($this->paymentGateway);
-            }
-
-            if (!$this->notificationContract->sendPaymentApproval()) {
-                throw TransferException::paymentMessageNotSent($this->notificationContract);
-            }
+//            if (!$this->paymentGateway->authorizePayment()) {
+//                throw TransferException::notAuthorizedByGateway($this->paymentGateway);
+//            }
+//
+//            if (!$this->notificationContract->sendPaymentApproval()) {
+//                throw TransferException::paymentMessageNotSent($this->notificationContract);
+//            }
 
             return true;
         });
@@ -77,18 +77,4 @@ class TransferService implements PaymentGatewayContract, NotificationContract
         // TODO: Implement getProviderName() method.
     }
 
-    public function sendPaymentApproval(): bool
-    {
-        // TODO: Implement sendPaymentApproval() method.
-    }
-
-    public function getPaymentGatewayName(): string
-    {
-        // TODO: Implement getPaymentGatewayName() method.
-    }
-
-    public function authorizePayment(): bool
-    {
-        // TODO: Implement authorizePayment() method.
-    }
 }
