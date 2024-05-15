@@ -15,11 +15,16 @@ class TransferController extends Controller
     {
     }
 
+    /**
+     * Rota que realiza a transferencia
+     * @param CreateTransferenceRequest $request
+     * @return Response
+     * @throws \App\Exceptions\TransferException
+     */
     public function postTransfer(
-        CreateTransferRequest $request
+        CreateTransferenceRequest $request
     ): Response
     {
-        dd(response());
         $this->transferService->handle($request->toDTO());
         return response()->noContent();
     }

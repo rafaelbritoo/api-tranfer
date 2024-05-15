@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Enum\TransferStatusEnum;
+use App\Enum\TransferenceStatusEnum;
 
 class Transfer extends Model
 {
@@ -18,7 +18,7 @@ class Transfer extends Model
     ];
 
     protected $casts = [
-        'status' => TransferStatusEnum::class,
+        'status' => TransferenceStatusEnum::class,
         'amount' => 'integer'
     ];
 }
