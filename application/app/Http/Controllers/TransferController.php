@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\TransferService;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Requests\CreateTransferRequest;
 
@@ -19,14 +19,8 @@ class TransferController extends Controller
         CreateTransferRequest $request
     ): Response
     {
+        dd(response());
         $this->transferService->handle($request->toDTO());
         return response()->noContent();
-    }
-
-    public function transferencia(
-        Request $request
-    )
-    {
-        return $request;
     }
 }

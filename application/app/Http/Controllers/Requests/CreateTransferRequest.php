@@ -26,7 +26,7 @@ class CreateTransferRequest extends FormRequest
         return [
             'payer_id' => ['required', 'exists:wallets,id'],
             'payee_id' => ['required', 'exists:wallets,id'],
-            'amount' => ['required', 'decimal', 'min:1'],
+            'amount' => ['required', 'exists:wallets,amount'],
         ];
     }
 

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wallet', function (Blueprint $table) {
+        Schema::create('wallets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customers_id')->constrained('customers');
             $table->decimal('amount', 10, 2);
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wallet');
+        Schema::dropIfExists('wallets');
     }
 };

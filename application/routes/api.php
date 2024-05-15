@@ -5,7 +5,5 @@ use App\Http\Controllers\TransferController;
 
 Route::prefix('/transfer')->group(function () {
     Route::post('/', [TransferController::class, 'postTransfer']);
-    Route::get('/', function () {
-        return 'asdasdasdasda';
-    });
+    Route::post('/transference', [TransferController::class, 'postTranferencia']);
 });
