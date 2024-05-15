@@ -2,34 +2,34 @@
 
 namespace App\Services;
 
-//use App\Contracts\NotificationContract;
-//use App\Contracts\PaymentGatewayContract;
-use App\DTO\TransferDTO;
-use App\Enum\TransferStatusEnum;
-use App\Exceptions\TransferException;
+use App\Contracts\NotificationContract;
+use App\Contracts\PaymentGatewayContract;
+use App\DTO\TransferenceDTO;
+use App\Enum\TransferenceStatusEnum;
+use App\Exceptions\TransferenceException;
 use App\Models\Customer;
 use App\Models\Wallet;
 use App\Repositories\CustomerRepository;
-use App\Repositories\TransferRepository;
+use App\Repositories\TransferenceRepository;
 use App\Repositories\WalletRepository;
 use Illuminate\Support\Facades\DB;
 
-class TransferService
+class TransferenceService
 {
     public function __construct(
-        private TransferRepository     $transferRepository,
-        private WalletRepository       $walletRepository,
-//        private PaymentGatewayContract $paymentGateway,
-//        private NotificationContract   $notificationContract,
-        private CustomerRepository     $customerRepository,
+        private TransferenceRepository     $transferRepository,
+        private WalletRepository           $walletRepository,
+        private PaymentGatewayContract     $paymentGateway,
+        private NotificationContract       $notificationContract,
+        private CustomerRepository         $customerRepository,
     )
     {
     }
 
     /**
-     * @throws TransferException
+     * @throws TransferenceException
      */
-    public function handle(TransferDTO $transferDTO): bool
+    public function handle(TransferenceDTO $transferDTO): bool
     {
         // payer validations
         $payerWallet   = $this->walletRepository->findById($transferDTO->payerId);
@@ -44,37 +44,32 @@ class TransferService
 
             $this->walletRepository->deposit($payeeWallet->getKey(), $transferDTO->amount);
             $this->walletRepository->withdrawal($payerWallet->getKey(), $transferDTO->amount);
-            $this->transferRepository->updateTransferStatus($transaction->getKey(), TransferStatusEnum::Done);
+            $this->transferRepository->updateTransferStatus($transaction->getKey(), TransferenceStatusEnum::Done);
 
-//            if (!$this->paymentGateway->authorizePayment()) {
-//                throw TransferException::notAuthorizedByGateway($this->paymentGateway);
-//            }
-//
-//            if (!$this->notificationContract->sendPaymentApproval()) {
-//                throw TransferException::paymentMessageNotSent($this->notificationContract);
-//            }
+            if (!$this->paymentGateway->authorizePayment()) {
+                throw TransferenceException::notAuthorizedByGateway($this->paymentGateway);
+            }
+
+            if (!$this->notificationContract->sendPaymentApproval()) {
+                throw TransferenceException::paymentMessageNotSent($this->notificationContract);
+            }
 
             return true;
         });
     }
 
     /**
-     * @throws TransferException
+     * @throws TransferenceException
      */
-    private function validatePaymentConditions(Wallet $payerWallet, Customer $payerCustomer, TransferDTO $transferDTO): void
+    private function validatePaymentConditions(Wallet $payerWallet, Customer $payerCustomer, TransferenceDTO $transferDTO): void
     {
-        if ($payerCustomer->isCnpj()) {
-            throw TransferException::customerNotAllowedToPay();
+        if ($payerCustomer->isRetailer()) {
+            throw TransferenceException::customerNotAllowedToPay();
         }
 
         if ($payerWallet->hasAmount($transferDTO->amount)) {
-            throw TransferException::outOfPocket();
+            throw TransferenceException::outOfPocket();
         }
-    }
-
-    public function getProviderName()
-    {
-        // TODO: Implement getProviderName() method.
     }
 
 }

@@ -2,20 +2,15 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use Ramsey\Uuid\Type\Decimal;
 
-/**
- * @property Decimal amount
- */
 class Wallet extends Model
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'wallet';
+    protected $table = 'wallets';
 
     /**
      * The attributes that are mass assignable.

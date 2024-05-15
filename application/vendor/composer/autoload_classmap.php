@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Contracts\\NotificationContract' => $baseDir . '/app/Contracts/NotificationContract.php',
+    'App\\Contracts\\PaymentGatewayContract' => $baseDir . '/app/Contracts/PaymentGatewayContract.php',
     'App\\DTO\\TransferDTO' => $baseDir . '/app/DTO/TransferDTO.php',
     'App\\Enum\\TransferStatusEnum' => $baseDir . '/app/Enum/TransferStatusEnum.php',
     'App\\Enum\\UserTypeEnum' => $baseDir . '/app/Enum/UserTypeEnum.php',
@@ -15,6 +17,7 @@ return array(
     'App\\Exceptions\\PaymentGatewayException' => $baseDir . '/app/Exceptions/PaymentGatewayException.php',
     'App\\External\\ExternalGateway' => $baseDir . '/app/External/ExternalGateway.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\Requests\\CreateTransferRequest' => $baseDir . '/app/Http/Controllers/Requests/CreateTransferRequest.php',
     'App\\Http\\Controllers\\TransferController' => $baseDir . '/app/Http/Controllers/TransferController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

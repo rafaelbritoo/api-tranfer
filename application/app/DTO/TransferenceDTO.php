@@ -2,7 +2,7 @@
 
 namespace App\DTO;
 
-readonly class TransferDTO
+readonly class TransferenceDTO
 {
     public function __construct(
         public string $payerId,

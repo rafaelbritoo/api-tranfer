@@ -3,7 +3,7 @@
 namespace App\Enum;
 
 
-enum TransferStatusEnum: string
+enum TransferenceStatusEnum: string
 {
     case Pending = 'pending';
     case Rejected = 'rejected';

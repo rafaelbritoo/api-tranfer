@@ -11,8 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Customer extends Model
 {
-    use HasFactory, Notifiable;
-
+    protected $table = 'Customers';
     /**
      * The attributes that are mass assignable.
      *
@@ -35,7 +34,7 @@ class Customer extends Model
         return $this->morphOne(Wallet::class, 'id');
     }
 
-    public function isCnpj(): bool
+    public function isRetailer(): bool
     {
         return $this->attributes['user_type'] == UserTypeEnum::Retailer;
     }

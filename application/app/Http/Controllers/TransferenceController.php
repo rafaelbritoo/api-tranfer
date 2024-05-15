@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\TransferService;
+use App\Exceptions\TransferenceException;
+use App\Services\TransferenceService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Controllers\Requests\CreateTransferRequest;
+use App\Http\Controllers\Requests\CreateTransferenceRequest;
+use App\Contracts\PaymentGatewayContract;
 
-class TransferController extends Controller
+class TransferenceController extends Controller
 {
     public function __construct(
-        private readonly TransferService $transferService
+        private readonly TransferenceService $transferService
     )
     {
     }
@@ -19,7 +21,7 @@ class TransferController extends Controller
      * Rota que realiza a transferencia
      * @param CreateTransferenceRequest $request
      * @return Response
-     * @throws \App\Exceptions\TransferException
+     * @throws TransferenceException
      */
     public function postTransfer(
         CreateTransferenceRequest $request

@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Enum\TransferenceStatusEnum;
 
-class Transfer extends Model
+class Transference extends Model
 {
-    protected $table = 'transfers';
+    protected $table = 'transferences';
 
     protected $fillable = [
         'id',

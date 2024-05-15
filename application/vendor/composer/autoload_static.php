@@ -535,6 +535,8 @@ class ComposerStaticInitaa322c53454393ed775cfe4807d54a50
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Contracts\\NotificationContract' => __DIR__ . '/../..' . '/app/Contracts/NotificationContract.php',
+        'App\\Contracts\\PaymentGatewayContract' => __DIR__ . '/../..' . '/app/Contracts/PaymentGatewayContract.php',
         'App\\DTO\\TransferDTO' => __DIR__ . '/../..' . '/app/DTO/TransferDTO.php',
         'App\\Enum\\TransferStatusEnum' => __DIR__ . '/../..' . '/app/Enum/TransferStatusEnum.php',
         'App\\Enum\\UserTypeEnum' => __DIR__ . '/../..' . '/app/Enum/UserTypeEnum.php',
@@ -543,6 +545,7 @@ class ComposerStaticInitaa322c53454393ed775cfe4807d54a50
         'App\\Exceptions\\PaymentGatewayException' => __DIR__ . '/../..' . '/app/Exceptions/PaymentGatewayException.php',
         'App\\External\\ExternalGateway' => __DIR__ . '/../..' . '/app/External/ExternalGateway.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Requests\\CreateTransferRequest' => __DIR__ . '/../..' . '/app/Http/Controllers/Requests/CreateTransferRequest.php',
         'App\\Http\\Controllers\\TransferController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransferController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

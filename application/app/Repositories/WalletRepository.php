@@ -3,17 +3,20 @@
 namespace App\Repositories;
 
 use App\Models\Wallet;
+use \Illuminate\Database\Eloquent\Builder;
+use \Illuminate\Database\Eloquent\Collection;
+use \Illuminate\Database\Eloquent\Model;
 
 class WalletRepository
 {
     /**
      * Pega pelo id da carteira
      * @param string $walletId
-     * @return Wallet
+     * @return
      */
     public function findById(string $walletId): Wallet
     {
-        return Wallet::query()->find($walletId);
+        return Wallet::query()->find();
     }
 
     /**

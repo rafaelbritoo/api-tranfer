@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\DTO\TransferDTO;
+use App\DTO\TransferenceDTO;
 
 class CreateTransferRequest extends FormRequest
 {
@@ -30,9 +30,9 @@ class CreateTransferRequest extends FormRequest
         ];
     }
 
-    public function toDTO(): TransferDTO
+    public function toDTO(): TransferenceDTO
     {
-        return new TransferDTO(
+        return new TransferenceDTO(
             payerId: $this->input('payer_id'),
             payeeId: $this->input('payee_id'),
             amount: $this->input('amount')

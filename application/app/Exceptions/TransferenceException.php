@@ -6,7 +6,7 @@ use App\Contracts\NotificationContract;
 use App\Contracts\PaymentGatewayContract;
 use Exception;
 
-class TransferException extends Exception
+class TransferenceException extends Exception
 {
     public static function customerNotAllowedToPay(): self
     {
@@ -25,6 +25,6 @@ class TransferException extends Exception
 
     public static function paymentMessageNotSent(NotificationContract $notification): self
     {
-        return new self(sprintf('Message not sent by %s.', $notification->getProviderName()));
+        return new self(sprintf('Message not sent by %s.', $notification->getRetailerName()));
     }
 }

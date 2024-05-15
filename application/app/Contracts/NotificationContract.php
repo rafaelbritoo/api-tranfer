@@ -4,6 +4,6 @@ namespace App\Contracts;
 
 interface NotificationContract
 {
-    public function getProviderName();
+    public function getRetailerName();
     public function sendPaymentApproval(): bool;
 }
