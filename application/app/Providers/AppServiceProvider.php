@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Http\Controllers\API\TransferenceController;
 use App\Services\TransferenceService;
-use App\Http\Controllers\TransferenceController;
+use Illuminate\Support\ServiceProvider;
 
 
 class AppServiceProvider extends ServiceProvider

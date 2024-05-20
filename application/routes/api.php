@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\TransferenceController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TransferenceController;
 
-Route::prefix('/transfer')->group(function () {
-    Route::post('/', [TransferenceController::class, 'postTransfer']);
-});
+Route::get('/transference', [TransferenceController::class, 'show']);
+Route::post('/transference', [TransferenceController::class, 'postTransference']);

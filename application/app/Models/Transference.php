@@ -10,7 +10,6 @@ class Transference extends Model
     protected $table = 'transferences';
 
     protected $fillable = [
-        'id',
         'payer_id',
         'payee_id',
         'amount',

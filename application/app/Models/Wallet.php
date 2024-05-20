@@ -18,7 +18,6 @@ class Wallet extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id',
         'customers_id',
         'amount',
     ];
